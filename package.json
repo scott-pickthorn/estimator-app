@@ -18,7 +18,12 @@
   },
   "homepage": "https://github.com/scott-pickthorn/estimator-app#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "mongodb": "^2.2.12"
+    "json": "^9.0.4",
+    "mongodb": "^2.2.12",
+    "request": "^2.79.0",
+    "urlencode": "^1.1.0",
+    "xml2js": "^0.4.17"
   }
 }

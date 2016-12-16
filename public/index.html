@@ -1,121 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>What's Your Home Worth?</title>
 
-        <!DOCTYPE html>
-        <html style="background: url('/images/ftyqhmCOZHiDWrFtPUq2.jpg') no-repeat center center fixed; background-size: cover; -webkit-background-size: cover; -o-background-size: cover;">
-        <head>
-            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-            <title>What's Your Home Worth?</title>
+        <meta name="DESCRIPTION" content=""/>
+        <meta name="KEYWORDS" content=""/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Pacifico">
+        <link rel="stylesheet" type="text/css" href="css/css.css">
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>     
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-            <meta name="DESCRIPTION" content=""/>
-            <meta name="KEYWORDS" content=""/>
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <meta property="og:image" content="http://www.geographicfarmvalues.com/images/ftyqhmCOZHiDWrFtPUq2.jpg">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-            <!--
-            <script type="text/javascript" src="http://fast.fonts.net/jsapi/97334e63-e099-4b70-9b62-0d34c33afdb3.js"></script>
-            -->
-
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-            <script type="text/javascript">
-                var images = new Array()
-
-                function preload() {
-                    for (i = 0; i < preload.arguments.length; i++) {
-                        images[i] = new Image();
-                        images[i].src = preload.arguments[i];
-                    }
-                }
-
-                preload(
-                    '/images/ftyqhmCOZHiDWrFtPUq2.jpg',
-                    '/styles/images/steps/step1_2.png',
-                    '/styles/images/steps/step2.png',
-                    '/styles/images/steps/step3.png',
-                    '/styles/images/logo_geo_farming.png'
-                );
-
-                //analytics -----------------
-                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-            </script>
-
-            
-            <script>
-                dataLayer = [];
-            </script>
-
-        </head>
-        <body>
-            <!-- Google Tag Manager -->
-            <noscript>
-                <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MH4V6Q"
-                              height="0" width="0" style="display:none;visibility:hidden">
-                </iframe>
-            </noscript>
-            <script>
-                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                })(window,document,'script','dataLayer','GTM-MH4V6Q');
-            </script>
-            <!-- End Google Tag Manager -->
-            <div id="main" class="container">
-                <div id="header-row" class="row">
-                    <div id="header" class="header">
-                        <div id="header-container" class="col-md-12 title">
-                            <h1>What's Your Home Worth?</h1>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>   
+    </head>
+    <body ng-app="estimate">
+        <div id="center" class="container" ng-controller="estimateCtlr">
+            <div id="header"class="container"><div class="center">Housing Estimater App</div></div>
+            <div id="userinfo" class="container">
+                <form ng-submit="submit" name="info" class="form-horizontal">
+                    <fieldset>
+                    <!-- full-name input-->
+                    <div class="control-group">
+                        <label class="control-label">Full Name</label>
+                        <div class="controls">
+                            <input id="name" name="name" type="text" placeholder="full name"
+                            class="form-control input-lg" ng-model="name">
+                            <p class="help-block"></p>
                         </div>
                     </div>
-                </div>
-                <div id="sub-header-row" class="row">
-                    <div id="sub-header" class="header">
-                        <div id="sub-header-container" class="col-md-12">
-                            <div id="sub-header-sub-title" class="sub-title">
-                                Find out <span class="underline">FAST</span> and <span class="underline">Free</span>                            </div>
+                    <!-- address-line1 input-->
+                    <div class="control-group">
+                        <label class="control-label">Street Address</label>
+                        <div class="controls">
+                            <input id="address" name="address" type="text" placeholder="address"
+                            class="form-control input-lg" ng-model="address">
+                            <p class="help-block">Street address, P.O. box, company name, c/o</p>
                         </div>
                     </div>
-                </div>
-                <div id="main-content" class="main-content"></div>
-                <div id="footer-spacer-row" class="row">
-                    <div id="footer-spacer-container" class="col-md-12 footer_space">&nbsp;</div>
-                </div>
-                <div id="footer-row" class="row footer-row display-none">
-                    <div id="footer-col1" class="col-md-1">&nbsp;</div>
-                    <div id="footer-col2" class="col-md-5 footer">
-                        Patent pending Geographic Farming, LLC, geographicfarm.com<br/>
-                        Copyright 2015. All rights reserved.
+                    <div class="control-group">
+                        <label class="control-label">City and State</label>
+                        <div class="controls">
+                            <input id="cityState" name="cityState" type="text" placeholder="City/State"
+                            class="form-control input-lg" ng-model="cityState">
+                            <p class="help-block">city, state c/o</p>
+                        </div>
                     </div>
-                    <div id="footer-col3" class="col-md-2 footer"><a href="/terms-of-service.html" target="_blank">Terms of service</a></div>
-                    <div id="footer-col4" class="col-md-2 footer"><a href="/privacy-policy.html" target="_blank">Privacy policy</a></div>
-                </div>
-                            </div>
+                    <div class="control-group">
+                        <div  class="input-group"
+                            <input id="number" name="number" type="text" placeholder="number"
+                            class="form-control" ng-model="number">
+                            <br />
+                        </div>
+                    </div>
 
-            <script data-main="/js/main.min.js" src="/js/lib/require.js"></script>
-            <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-            <script src="/js/lib/ie10-viewport-bug-workaround.js"></script>
-
-            
-            <script type="text/javascript">
-
-                function page1Callback(){
-                                    }
-
-                function page2Callback(){
-                                    }
-
-                function page3Callback(){
-                                    }
-            </script>
-
-        </body>
-        </html>
+                    <button id="info" type="submit" value="submit" class="btn btn-primary btn-lg" ng-click="getInfo()"/>get estimate</button>
+                    </fieldset>
+                </form>
+                <br />
+            </div>
+            <div id="wrapper"><!-- <div class="lrg">
+                House Estimate:{{house_estimate.mid}}</div> -->
+            <div id="map"></div>
+            </div>
+        </div>
+        </div>
+        <script>
+            function init() {
+                // create the map
+                var myOptions = {
+                    zoom: 18,
+                    center: new google.maps.LatLng(45.6, -122.76),
+                    mapTypeId: google.maps.MapTypeId.SATELLITE
+                  }
+                    map = new google.maps.Map(document.getElementById("map"),myOptions);
+                    $("#map").hide();           
+             }
+        </script>
+        <script src="js/main.js"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaOzU7c_8RDreOb24Cugn1D9_gaWt0_To&callback=init" ></script>
+    </body>
+</html>
