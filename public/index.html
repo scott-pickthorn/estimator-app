@@ -27,7 +27,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>   
     </head>
     <body ng-app="estimate">
-        <div id="center" class="container" ng-controller="estimateCtlr">
+        <div id="cntlr" class="container" ng-controller="estimateCtlr">
             <div id="header"class="container"><div class="center">estimate your home value</div></div>
             <div id="userinfo" class="container">
                 <form ng-submit="submit" name="info" class="form-horizontal">
@@ -73,8 +73,8 @@
             </div>
             <div id="map-estimator"><div class="lrg center">
                 House Estimates<br>
-                {{house_estimate.low}} {{house_estimate.mid}} {{house_estimate.high}}</div>
-            <div id="map" class="center"></div>
+                low ${{house_estimate.low}} mid ${{house_estimate.mid}} hight ${{house_estimate.high}}</div>
+            <div id="map" class="center-cell"></div>
             </div>
         </div>
         </div>
@@ -82,15 +82,16 @@
             function init() {
                 // create the map
                 var myOptions = {
-                    zoom: 18,
+                    zoom: 19,
                     center: new google.maps.LatLng(45.6, -122.76),
                     mapTypeId: google.maps.MapTypeId.SATELLITE
                   }
-                    map = new google.maps.Map(document.getElementById("map"),myOptions);
-                    //$("#map").hide();           
+                map = new google.maps.Map(document.getElementById("map"),myOptions);
+                    $("#map").hide();           
              }
         </script>
         <script src="js/main.js"></script>
+        <script src="js/spin.js"></script>        
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaOzU7c_8RDreOb24Cugn1D9_gaWt0_To&callback=init" ></script>
     </body>
 </html>
