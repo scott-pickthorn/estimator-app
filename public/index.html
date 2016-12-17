@@ -9,7 +9,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
          <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Pacifico">
         <link rel="stylesheet" type="text/css" href="css/css.css">
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>     
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>   
+            <style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>  
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -22,7 +28,7 @@
     </head>
     <body ng-app="estimate">
         <div id="center" class="container" ng-controller="estimateCtlr">
-            <div id="header"class="container"><div class="center">Housing Estimater App</div></div>
+            <div id="header"class="container"><div class="center">estimate your home value</div></div>
             <div id="userinfo" class="container">
                 <form ng-submit="submit" name="info" class="form-horizontal">
                     <fieldset>
@@ -65,9 +71,10 @@
                 </form>
                 <br />
             </div>
-            <div id="wrapper"><!-- <div class="lrg">
-                House Estimate:{{house_estimate.mid}}</div> -->
-            <div id="map"></div>
+            <div id="map-estimator"><div class="lrg center">
+                House Estimates<br>
+                {{house_estimate.low}} {{house_estimate.mid}} {{house_estimate.high}}</div>
+            <div id="map" class="center"></div>
             </div>
         </div>
         </div>
@@ -80,7 +87,7 @@
                     mapTypeId: google.maps.MapTypeId.SATELLITE
                   }
                     map = new google.maps.Map(document.getElementById("map"),myOptions);
-                    $("#map").hide();           
+                    //$("#map").hide();           
              }
         </script>
         <script src="js/main.js"></script>

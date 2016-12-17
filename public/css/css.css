@@ -10,12 +10,13 @@ html body {
 #header {
 	height: 200px;
 	font-size: 4em;
-	font-weight: light;
+	font-weight: lighter;
 	color: white;
 	font-family: 'Pacifico';
 	letter-spacing: 7px;
-	line-height: 200px; 
+	display: table;
 }
+.
 input {
 	width: 400px;
 }
@@ -24,120 +25,21 @@ label {
 	color: white;
 }
 .center {
+	display: table-cell;
 	text-align: center; 
 	vertical-align: middle;
 }
 .lrg {
 	height: 100px;
-	font-size: 2em;
+	font-size: 4em;
 	font-weight: light; 
+	color: white;
 }
+#map{
+	width: 50%;
+	height: 300px;
 }
-#center {
-	height: 100%;
-}
-
-$radius: 10px;
-$thickness: 5px;
-$border-color: rgba(black, 0.15);
-$background-color: white;
-
-.wrapper {
-  position: relative;
-  width: 400px;
-  height: 200px;
-  overflow: hidden;
-  margin: 50px;
-
-  & > i {
-    display: block;
-    position: absolute;
-
-    &.top {
-      top: 0;
-      border-top: $thickness solid $border-color;
-      &:after {
-        top: -$radius/2 - $thickness;
-        border-top: $radius/2 solid $background-color;
-      }
-    }
-    &.right {
-      right: 0;
-      border-right: $thickness solid $border-color;
-      &:after {
-        right: -$radius/2 - $thickness;
-        border-right: $radius/2 solid $background-color;
-      }
-    }
-    &.bottom {
-      bottom: 0;
-      border-bottom: $thickness solid $border-color;
-      &:after {
-        bottom: -$radius/2 - $thickness;
-        border-bottom: $radius/2 solid $background-color;
-      }
-    }
-    &.left {
-      left: 0;
-      border-left: $thickness solid $border-color;
-      &:after {
-        left: -$radius/2 - $thickness;
-        border-left: $radius/2 solid $background-color;
-      }
-    }
-
-    &.top:not(.right):not(.left),
-    &.bottom:not(.right):not(.left) {
-      height: $thickness;
-      left: $radius+$thickness;
-      right: $radius+$thickness;
-    }
-
-    &.left:not(.top):not(.bottom),
-    &.right:not(.top):not(.bottom) {
-      width: $thickness;
-      top: $radius+$thickness;
-      bottom: $radius+$thickness;
-    }
-
-    &.top.right,
-    &.top.left,
-    &.bottom.right,
-    &.bottom.left {
-      width: $radius;
-      height: $radius;
-
-      &:after {
-        content:"";
-        position: absolute;
-        width: 1.5*$radius;
-        height: 1.5*$radius;
-      }
-    }
-
-    &.top.right {
-      border-top-right-radius: $radius;
-      &:after { border-top-right-radius: 1.5*$radius; }
-    }
-    &.top.left {
-      border-top-left-radius: $radius;
-      &:after { border-top-left-radius: 1.5*$radius; }
-    }
-    &.bottom.right {
-      border-bottom-right-radius: $radius;
-      &:after { border-bottom-right-radius: 1.5*$radius; }
-    }
-    &.bottom.left {
-      border-bottom-left-radius: $radius;
-      &:after { border-bottom-left-radius: 1.5*$radius; }
-    }
-  }
-}
-
-#map {
-  width: inherit;
-  height: inherit;
-  .gmnoprint {
-    display: none;
-  }
+#map-estimator{
+	height: 200px;
+	display: table;
 }
