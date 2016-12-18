@@ -1,5 +1,5 @@
 body {	
-	position: absolute;
+	position: relative;
 	background: url(../img/wood_house_4.jpg) no-repeat center center fixed; 
   	-webkit-background-size: cover;
   	-moz-background-size: cover;
