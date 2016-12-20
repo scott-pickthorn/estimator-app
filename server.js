@@ -6,7 +6,6 @@ var bodyParser = require('body-parser');
 var request = require('request');
 var xmlParser = require('xml2js').parseString;
 var app = express();
-var nodemailer = require('nodemailer');
 var profile = {};
 var estimate = {};
 
