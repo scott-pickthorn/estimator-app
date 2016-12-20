@@ -5,16 +5,16 @@ estimate.controller("estimateCtlr", ['$scope', '$http', function($scope, $http){
     $scope.mapscript = '';
 	profile = {}
 	$scope.getInfo = function(){
-        profile = {"name": $scope.name,
-					  "address": $scope.address,
-                      "cityState": $scope.cityState,
-					  "number": $scope.number
-					 };
-        // profile = {"name": "scott",
-        //               "address": "9380 sw meadow ln",
-        //               "cityState": "portland, or",
-        //               "number": "503409393"
-        //              };        
+      //   profile = {"name": $scope.name,
+					 //  "address": $scope.address,
+      //                 "cityState": $scope.cityState,
+					 //  "number": $scope.number
+					 // };
+        profile = {"name": "scott",
+                      "address": "9380 sw meadow ln",
+                      "cityState": "portland, or",
+                      "number": "503409393"
+                     };        
         $http.get('/house_estimate/' + profile.address + '&' + profile.cityState).then(function(response) {
             $scope.house_estimate = response.data;
             console.log($scope.house_estimate);

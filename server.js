@@ -6,8 +6,11 @@ var bodyParser = require('body-parser');
 var request = require('request');
 var xmlParser = require('xml2js').parseString;
 var app = express();
+var nodemailer = require('nodemailer');
 var profile = {};
 var estimate = {};
+
+
 var zwsid = 'X1-ZWz19g98gn4zrf_3e7gq';
 var api_key = 'AIzaSyAaOzU7c_8RDreOb24Cugn1D9_gaWt0_To';
 

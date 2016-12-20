@@ -1,3 +1,4 @@
+html { background: transparent;}
 body {	
 	height: 100%;
 	width: 100%;
@@ -16,9 +17,6 @@ body {
 	font-family: 'Pacifico';
 	letter-spacing: 7px;
 }
-#cntlr {
-	display: table;
-}
 .
 input {
 	width: 400px;
@@ -27,19 +25,8 @@ input {
 label {
 	color: white;
 }
-.center {
-	display: table-row;
-	text-align: center; 
-	vertical-align: middle;
-	height: 200px;
-}
-.center-cell {
-	display: table-cell;
-	text-align: center; 
-	height: 200px;
-}
+
 .lrg {
-	height: 100px;
 	font-size: 3em;
 	font-weight: light; 
 	color: white;
@@ -48,9 +35,9 @@ label {
 #map{
 	width: 20%;
 	height: 400px;
+	max-width: 400px;
 }
 #map-estimator{
-	height: 200px;
-	display: table;
+	height: 400px;
 	display: none;
 }

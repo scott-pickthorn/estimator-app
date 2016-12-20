@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>What's Your Home Worth?</title>
+        <title>Home Value</title>
 
         <meta name="DESCRIPTION" content=""/>
         <meta name="KEYWORDS" content=""/>
@@ -10,12 +10,12 @@
          <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Pacifico">
         <link rel="stylesheet" type="text/css" href="css/css.css">
         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>   
-            <style>
-       #map {
-        height: 400px;
-        width: 100%;
-       }
-    </style>  
+           <style>
+               #map {
+                height: 400px;
+                width: 100%;
+               }
+            </style>  
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -27,55 +27,47 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>   
     </head>
     <body ng-app="estimate">
-        <div id="cntlr" class="container" ng-controller="estimateCtlr">
-            <div id="header"class="container"><div class="center">estimate your home value</div></div>
-            <div id="userinfo" class="container">
-                <form ng-submit="submit" name="info" class="form-horizontal">
-                    <fieldset>
-                    <!-- full-name input-->
-                    <div class="control-group">
-                        <label class="control-label">Full Name</label>
-                        <div class="controls">
+        <div class="container" ng-controller="estimateCtlr">
+            <div id="header"class="row">
+                <div class="center text-center">
+                    estimate your home value
+                </div>
+            </div>
+            <div id="userinfo" class="row">
+                <form ng-submit="submit" data-toggle="validator" role="form" class="form-horizontal">
+                    <div class="form-group">
+                        <label for="name"class="control-label">Full Name</label>
                             <input id="name" name="name" type="text" placeholder="full name"
                             class="form-control input-lg" ng-model="name">
-                            <p class="help-block"></p>
-                        </div>
                     </div>
                     <!-- address-line1 input-->
-                    <div class="control-group">
+                    <div class="form-group">
+                        <label for="inputEmail" class="control-label">Email</label>
+                        <input type="email" class="form-control input-lg" id="inputEmail" placeholder="Email" data-error="Bruh, that email address is invalid" required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group">
                         <label class="control-label">Street Address</label>
-                        <div class="controls">
-                            <input id="address" name="address" type="text" placeholder="address"
+                        <input id="address" name="address" type="text" placeholder="address"
                             class="form-control input-lg" ng-model="address">
-                            <p class="help-block">Street address, P.O. box, company name, c/o</p>
-                        </div>
                     </div>
-                    <div class="control-group">
+                    <div class="form-group">
                         <label class="control-label">City and State</label>
-                        <div class="controls">
-                            <input id="cityState" name="cityState" type="text" placeholder="City/State"
+                        <input id="cityState" name="cityState" type="text" placeholder="City/State"
                             class="form-control input-lg" ng-model="cityState">
-                            <p class="help-block">city, state c/o</p>
-                        </div>
+                        <p class="help-block">city, state c/o</p>
                     </div>
-                    <div class="control-group">
-                        <div  class="input-group"
-                            <input id="number" name="number" type="text" placeholder="number"
-                            class="form-control" ng-model="number">
-                            <br />
-                        </div>
-                    </div>
-
                     <button id="info" type="submit" value="submit" class="btn btn-primary btn-lg" ng-click="getInfo()"/>get estimate</button>
-                    </fieldset>
                 </form>
                 <br />
             </div>
-            <div id="map-estimator"><div class="lrg center">
-                House Estimates<br>
-                low ${{house_estimate.low}} mid ${{house_estimate.mid}} hight ${{house_estimate.high}}</div>
-            <div id="map" class="center-cell"></div>
+            <div id="map-estimator"><div class="row lrg text-center">
+                House Estimates
+                low {{house_estimate.low | currency:"$":0}} mid {{house_estimate.mid | currency:"$":0}} high {{house_estimate.high | currency:"$":0}}</div>
+            <br>
+            <div id="map" class=" row center-block"></div>
             </div>
+
         </div>
         <div id="load" class="center"></div>
         </div>
