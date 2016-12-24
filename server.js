@@ -22,6 +22,7 @@ app.get('/house_estimate/:address&:cityState', function (req, res) {
   }
   var address = urlencode(req.params.address);
   var citystatezip = urlencode(req.params.cityState);
+  console.log(address + " " + citystatezip);
   request('http://www.zillow.com/webservice/GetSearchResults.htm?zws-id=X1-ZWz19g98gn4zrf_3e7gq&address=' + address + '&citystatezip=' + citystatezip, function (error, response, body) {
    if (!error && response.statusCode == 200) {
      xmlParser(body, function(err,result){ 

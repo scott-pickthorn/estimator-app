@@ -34,38 +34,36 @@
                 </div>
             </div>
             <div id="userinfo" class="row">
-                <form ng-submit="submit" data-toggle="validator" role="form" class="form-horizontal">
-                    <div class="form-group">
-                        <label for="name"class="control-label">Full Name</label>
-                            <input id="name" name="name" type="text" placeholder="full name"
-                            class="form-control input-lg" ng-model="name">
-                    </div>
-                    <!-- address-line1 input-->
-                    <div class="form-group">
-                        <label for="inputEmail" class="control-label">Email</label>
-                        <input type="email" class="form-control input-lg" id="inputEmail" placeholder="Email" data-error="Bruh, that email address is invalid" required>
-                        <div class="help-block with-errors"></div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Street Address</label>
-                        <input id="address" name="address" type="text" placeholder="address"
-                            class="form-control input-lg" ng-model="address">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">City and State</label>
-                        <input id="cityState" name="cityState" type="text" placeholder="City/State"
-                            class="form-control input-lg" ng-model="cityState">
-                        <p class="help-block">city, state c/o</p>
-                    </div>
-                    <button id="info" type="submit" value="submit" class="btn btn-primary btn-lg" ng-click="getInfo()"/>get estimate</button>
-                </form>
-                <br />
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <form ng-submit="submit" data-toggle="validator" role="form" class="form-horizontal">
+                        <div class="form-group">
+                            <label for="name"class="control-label">Full Name</label>
+                                <input id="name" name="name" type="text" placeholder="full name"
+                                class="form-control input-lg" ng-model="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail" class="control-label">Email</label>
+                            <input type="email" name="email" class="form-control input-lg" id="inputEmail" placeholder="Email" data-error="Bruh, that email address is invalid" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Street Address</label>
+                            <input id="address" name="address" type="text" placeholder="address"
+                                class="form-control input-lg" ng-model="address">
+                        </div>
+                        <button id="info" type="submit" value="submit" class="btn btn-primary btn-lg" ng-click="getInfo()"/>get estimate</button>
+                    </form>
+                </div>
             </div>
-            <div id="map-estimator"><div class="row lrg text-center">
+            <div id="map-estimator" class="row text-center">
+                <div>
+                    <div class="col-sm-12 col-md-12 col-lg-12 lrg">
                 House Estimates
                 low {{house_estimate.low | currency:"$":0}} mid {{house_estimate.mid | currency:"$":0}} high {{house_estimate.high | currency:"$":0}}</div>
-            <br>
-            <div id="map" class=" row center-block"></div>
+                </div>
+                <div class=" center-block">
+                    <div id="map" class="col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"></div>
+                </div>
             </div>
 
         </div>
@@ -80,12 +78,37 @@
                     mapTypeId: google.maps.MapTypeId.SATELLITE
                   }
                 map = new google.maps.Map(document.getElementById("map"),myOptions);
-                    $("#map").hide();           
+                    $("#map").hide();
+                autocomplete = new google.maps.places.SearchBox(document.getElementById("address"));
+                google.maps.event.addListener(autocomplete, 'places_changed', function(){
+                        var place = autocomplete.getPlaces();
+                        address = place[0].geometry.location;
+                        streetAddress = "";
+                        cityState = "";
+                        streetNumber = "";
+                        streetRoute = "";
+                        city = "";
+                        state = "";
+                        console.log(place[0].address_components[4].types[0]);
+                        for (i = 0; i < place[0].address_components.length; i++){
+                            if(place[0].address_components[i].types[0] == 'street_number')
+                                streetNumber = place[0].address_components[i].long_name;
+                            if(place[0].address_components[i].types[0] == 'route')
+                                streetRoute = place[0].address_components[i].long_name;
+                            if(place[0].address_components[i].types[0] == 'locality')
+                                city = place[0].address_components[i].long_name;
+                            if(place[0].address_components[i].types[0] == 'administrative_area_level_1')
+                                state = place[0].address_components[i].long_name;
+
+                        }           
+                        streetAddress = streetNumber + " "+ streetRoute;
+                        cityState = city + "," + state;
+
+                });
              }
         </script>
         <script src="js/spin.js"></script>         
         <script src="js/main.js"></script>
-        <script src="js/main.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaOzU7c_8RDreOb24Cugn1D9_gaWt0_To&callback=init" ></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaOzU7c_8RDreOb24Cugn1D9_gaWt0_To&callback=init&libraries=places" ></script>
     </body>
 </html>
