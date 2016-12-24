@@ -7,40 +7,36 @@ estimate.controller("estimateCtlr", ['$scope', '$http', function($scope, $http){
 	$scope.getInfo = function(){
       //   profile = {"name": $scope.name,
 					 //  "address": $scope.address,
-      //                 "cityState": $scope.cityState,
-					 //  "number": $scope.number
+      //                 "cityState": 'portland, or',
+					 //  "email": $scope.email
 					 // };
-        profile = {"name": "scott",
-                      "address": "9380 sw meadow ln",
-                      "cityState": "portland, or",
-                      "number": "503409393"
-                     };        
-        $http.get('/house_estimate/' + profile.address + '&' + profile.cityState).then(function(response) {
+        
+        $http.get('/house_estimate/' + streetAddress + '&' + cityState).then(function(response) {
             $scope.house_estimate = response.data;
             console.log($scope.house_estimate);
         });   
-       
-
-        $http.post('/info', profile).then(function(response) {
-            console.log(response);
-        });
+        // $http.post('/info', profile).then(function(response) {
+        //     console.log(response);
+        // });
         loadSpinner();
-    setTimeout(function(){
-        $('#load').hide();
-        $("#map").show();
-        $("#map-estimator").show();
-        latlng = new google.maps.LatLng($scope.house_estimate.lat,$scope.house_estimate.lng);
+        setTimeout(function(){
+            $('#load').hide();
+            $("#map").show();
+            $("#map-estimator").show();
+            loadMap();
+            $("#userinfo").hide();
+        }, 2000);
+    };
+    loadMap = function () {
         marker = new google.maps.Marker({
-            position: latlng,
+            position: address,
             title:"your house",
             size: new google.maps.Size(171, 171),
         });
         marker.setMap(map);
         google.maps.event.trigger(map,"resize");
         map.setCenter(marker.getPosition());
-           }, 2000);
-    $("#userinfo").hide();
-    };
+    }
     loadSpinner = function () {
         var opts = {
           lines: 12 // The number of lines to draw

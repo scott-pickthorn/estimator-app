@@ -1,6 +1,6 @@
 html, body {
-	min-height: 1000px;
-	min-width: 500px;	
+	min-height: 800px;
+	min-width: 400px;	
 	height: 100vh !important;
 	width: 100%;
 	background: url(../img/wood_house_4.jpg) no-repeat center center fixed; 
@@ -8,6 +8,11 @@ html, body {
   	-moz-background-size: cover;
   	-o-background-size: cover;
   	background-size: cover;
+}
+#userinfo{
+	margin: 0 auto;
+	padding-left: 100px;
+	padding-right: 100px;
 }
 #header {
 	height: 200px;
@@ -17,11 +22,6 @@ html, body {
 	font-family: 'Pacifico';
 	letter-spacing: 7px;
 }
-.
-input {
-	width: 400px;
-}
-
 label {
 	color: white;
 }
