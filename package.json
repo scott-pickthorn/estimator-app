@@ -24,6 +24,7 @@
     "json": "^9.0.4",
     "mongodb": "^2.2.12",
     "node-mailer": "^0.1.1",
+    "nodemailer": "^2.7.0",
     "request": "^2.79.0",
     "urlencode": "^1.1.0",
     "xml2js": "^0.4.17"
