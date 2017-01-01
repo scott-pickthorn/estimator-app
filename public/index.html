@@ -34,7 +34,7 @@
                         <div class="form-group">
                             <label for="name"class="control-label">Full Name</label>
                                 <input id="name" name="name" type="text" placeholder="full name"
-                                class="form-control input-lg" ng-model="name">
+                                class="form-control input-lg" ng-model="name" required>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail" class="control-label">Email</label>
@@ -44,9 +44,10 @@
                         <div class="form-group">
                             <label class="control-label">Street Address</label>
                             <input id="address" name="address" type="text" placeholder="address"
-                                class="form-control input-lg" ng-model="address">
+                                class="form-control input-lg" ng-model="address" required>
                         </div>
-                        <button id="info" type="submit" value="submit" class="btn btn-primary btn-lg" ng-click="getInfo()"/>get estimate</button>
+                        <div class="form-group">
+                        <input id="info" type="submit" value="get estimate" class="btn btn-primary btn-lg" ng-click="getInfo()"/></div>
                     </form>
                 </div>
             </div>
