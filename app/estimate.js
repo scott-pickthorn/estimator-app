@@ -4,16 +4,16 @@ var urlencode = require('urlencode');
 var zwsid = 'X1-ZWz19g98gn4zrf_3e7gq';
 var api_key = 'AIzaSyAaOzU7c_8RDreOb24Cugn1D9_gaWt0_To';
 
-module.exports.getEstimate = function(add, cityState){
+module.exports.getEstimate = function(add, cityState, callback){
    var address = urlencode(add);
    var cityStateZip = urlencode(cityState); 
-   request('http://www.zillow.com/webservice/GetSearchResults.htm?zws-id=X1-ZWz19g98gn4zrf_3e7gq&address=' + address + '&citystatezip=' + cityStateZip, function (error, response, body) {
+   request('http://www.zillow.com/webservice/GetSearchResults.htm?zws-id=X1-ZWz19g98gn4zrf_3e7gq&address=' + address + '&citystatezip=' + cityStateZip, function (err1, response, body) {
    if(response == undefined){
         console.log(response);
-        return 500;
+        if(err1) callback(err1);
    }
 
-   if (!error && response.statusCode == 200) {
+   if (!err1 && response.statusCode == 200) {
    		xmlParser(body, function(err,result){ 
 	      	statusCode = result['SearchResults:searchresults']['message'][0]['code'][0];
 	   		if(statusCode == 0){
@@ -26,17 +26,16 @@ module.exports.getEstimate = function(add, cityState){
 	        	"mid": resultsZestimate['amount'][0]['_'],
 	       		"high": resultsZestimate['valuationRange'][0]['high'][0]['_']
 	      	};
-	      	console.log(estimate);
-	      	return estimate;
+            console.log("from estimator: " + estimate.lat);
+	      	callback(null, estimate);
 	    	}
 	    	else{
-	    	console.log(statusCode);
-	      	return statusCode;
+                if(err) callback(err);
 	    	}  
 		});
    }
   else{
-   return response.statusCode;
+   if(err1) callback(err1);
   }
 }); 
 }

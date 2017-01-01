@@ -9,7 +9,6 @@ app.controller("estimateCtlr", ['$scope', '$http', function($scope, $http){
         profile = {"name": $scope.name,
 					  "email": $scope.email
 				    };
-        
         $http.get('/house_estimate/' + streetAddress + '&' + cityState).then(function(response) {
             if(response.statuscode != 200){
                 console.log(response);
@@ -33,6 +32,7 @@ app.controller("estimateCtlr", ['$scope', '$http', function($scope, $http){
             $("#userinfo").hide();
         }, 2000);
     };
+
     loadMap = function () {
         marker = new google.maps.Marker({
             position: address,
