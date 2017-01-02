@@ -1,23 +1,28 @@
-var estimate = angular.module("estimate", []);
+var app = angular.module("estimate", []);
 
-estimate.controller("estimateCtlr", ['$scope', '$http', function($scope, $http){
+app.controller("estimateCtlr", ['$scope', '$http', function($scope, $http){
 	$scope.house_estimate = {};
     $scope.mapscript = '';
-	profile = {}
-	$scope.getInfo = function(){
-      //   profile = {"name": $scope.name,
-					 //  "address": $scope.address,
-      //                 "cityState": 'portland, or',
-					 //  "email": $scope.email
-					 // };
-        
+	profile = {};
+
+    $scope.getInfo = function(){
+        profile = {"name": $scope.name,
+					  "email": $scope.email
+				    };
         $http.get('/house_estimate/' + streetAddress + '&' + cityState).then(function(response) {
+            if(response.statuscode != 200){
+                console.log(response);
+            }
             $scope.house_estimate = response.data;
             console.log($scope.house_estimate);
-        });   
-        // $http.post('/info', profile).then(function(response) {
-        //     console.log(response);
-        // });
+        }); 
+
+
+        $http.post('/info', profile).then(function(response) {
+            console.log(response);
+        });
+
+
         loadSpinner();
         setTimeout(function(){
             $('#load').hide();
@@ -27,6 +32,7 @@ estimate.controller("estimateCtlr", ['$scope', '$http', function($scope, $http){
             $("#userinfo").hide();
         }, 2000);
     };
+
     loadMap = function () {
         marker = new google.maps.Marker({
             position: address,

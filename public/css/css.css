@@ -11,8 +11,8 @@ html, body {
 }
 #userinfo{
 	margin: 0 auto;
-	padding-left: 100px;
-	padding-right: 100px;
+	padding-left: 25px;
+	padding-right: 25px;
 }
 #header {
 	height: 200px;
