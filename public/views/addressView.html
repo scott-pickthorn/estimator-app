@@ -1,0 +1,24 @@
+<div id="userinfo" class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <form ng-submit="submit" data-toggle="validator" role="form" class="form-horizontal">
+            <div class="form-group">
+                <label for="name"class="control-label">Full Name</label>
+                <input id="name" name="name" type="text" placeholder="full name"
+                    class="form-control input-lg" ng-model="name" required>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="control-label">Email</label>
+                <input type="email" ng-model="email" name="email" class="form-control input-lg" id="inputEmail" placeholder="Email" data-error="Bruh, that email address is invalid" required>
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Street Address</label>
+                <input id="address" name="address" type="text" placeholder="address"
+                    class="form-control input-lg" ng-model="address" required>
+            </div>
+            <div class="form-group">
+                <input id="info" type="submit" value="get estimate" class="btn btn-primary btn-lg" ng-click="getInfo()"/>
+            </div>
+        </form>
+    </div>
+</div>

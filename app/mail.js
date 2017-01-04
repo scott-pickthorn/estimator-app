@@ -9,7 +9,7 @@ module.exports.sendMail = function(email, estimate) {
 		Destination: {ToAddresses: [email]},
 		Message: {
 			Body: {
-				Html:{ Data:'<div>'+estimate+'</div>'}
+				Html:{ Data:'<div>estimate: '+estimate+'</div>'}
 			},
 			Subject: {
 				Data: 'test'

@@ -23,12 +23,15 @@ app.get('/house_estimate/:address&:cityState', function (req, res) {
     return res.status(412).send('No city and state field');
   }
   estimator.getEstimate(req.params.address, req.params.cityState, function(err, estimate){
-    console.log(estimate);
+    this.estimate = estimate;
     res.send(estimate);
   });
-  console.log('I received a house request');
-  //mailer.sendMail("scott.e.pickthorn@gmail.com", estimate);
-  
+  console.log(estimate);
+});
+
+
+app.get('/email_estimate/:profile&:email', function(){
+  mailer.sendMail("scott.e.pickthorn@gmail.com", estimate);
 });
 
 
@@ -39,16 +42,17 @@ app.get('/api_key', function (req, res) {
 
 
 app.post('/info', function (req, res) {
-  if(!req.body.name){
-    return res.status(412).send('No name field');
-  }
-  if(!req.body.email){  
-    return res.status(412).send('No address field');
-  }
-  profile = {"name": req.body.name,
-             "email": req.body.email
-  };
-  db.saveUser(profile);
+  // if(!req.body.profile.name){
+  //   return res.status(412).send('No name field');
+  // }
+  // if(!req.body.profile.email){  
+  //   return res.status(412).send('No email field');
+  // }
+  // profile = {"name": req.body.profile.name,
+  //            "email": req.body.profile.email
+  // };
+  //db.saveUser(profile);
+  console.log(req.body);
   res.send('success');
 });
   

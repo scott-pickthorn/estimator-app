@@ -1,4 +1,4 @@
-var app = angular.module("estimate", []);
+var app = angular.module("estimate", ["angular-loading-bar"]);
 
 app.controller("estimateCtlr", ['$scope', '$http', function($scope, $http){
 	$scope.house_estimate = {};
@@ -14,23 +14,32 @@ app.controller("estimateCtlr", ['$scope', '$http', function($scope, $http){
                 console.log(response);
             }
             $scope.house_estimate = response.data;
-            console.log($scope.house_estimate);
+            
         }); 
-
 
         $http.post('/info', profile).then(function(response) {
             console.log(response);
         });
 
-
+        
         loadSpinner();
-        setTimeout(function(){
-            $('#load').hide();
-            $("#map").show();
-            $("#map-estimator").show();
-            loadMap();
-            $("#userinfo").hide();
-        }, 2000);
+        console.log($scope.house_estimate.low);    
+        if($scope.house_estimate.low){
+            setTimeout(function(){
+                $('#load').hide();
+                $("#map").show();
+                $("#map-estimator").show();
+                loadMap();
+                $("#userinfo").hide();
+            }, 2000);
+        }
+        else{
+            setTimeout(function(){
+                $('#load').hide();
+                $("#no-estimate").show();
+                $("#userinfo").hide();
+            }, 2000);
+        }
     };
 
     loadMap = function () {
@@ -68,7 +77,6 @@ app.controller("estimateCtlr", ['$scope', '$http', function($scope, $http){
         }
         var target = document.getElementById('load');
         var spinner = new Spinner(opts).spin(target);
-        console.log("spinner loaded");
     };
 
 }]);

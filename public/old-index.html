@@ -3,23 +3,22 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home Value</title>
-
         <meta name="DESCRIPTION" content=""/>
         <meta name="KEYWORDS" content=""/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Pacifico">
-        <link rel="stylesheet" type="text/css" href="css/css.css"> 
-           <style>
-               #map {
-                height: 400px;
-                width: 100%;
-               }
-            </style>  
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Pacifico">
+        <link rel="stylesheet" type="text/css" href="css/css.css">
+        <link rel="stylesheet" type="text/css" href="css/angular-loading-bar.min.css">
+        <style>
+            #map {
+            height: 400px;
+            width: 100%;
+            }
+        </style>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
         <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">  
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     </head>
     <body ng-app="estimate">
         <div class="container" ng-controller="estimateCtlr">
@@ -33,12 +32,12 @@
                     <form ng-submit="submit" data-toggle="validator" role="form" class="form-horizontal">
                         <div class="form-group">
                             <label for="name"class="control-label">Full Name</label>
-                                <input id="name" name="name" type="text" placeholder="full name"
+                            <input id="name" name="name" type="text" placeholder="full name"
                                 class="form-control input-lg" ng-model="name" required>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail" class="control-label">Email</label>
-                            <input type="email" name="email" class="form-control input-lg" id="inputEmail" placeholder="Email" data-error="Bruh, that email address is invalid" required>
+                            <input type="email" ng-model="email" name="email" class="form-control input-lg" id="inputEmail" placeholder="Email" data-error="Bruh, that email address is invalid" required>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
@@ -47,7 +46,8 @@
                                 class="form-control input-lg" ng-model="address" required>
                         </div>
                         <div class="form-group">
-                        <input id="info" type="submit" value="get estimate" class="btn btn-primary btn-lg" ng-click="getInfo()"/></div>
+                            <input id="info" type="submit" value="get estimate" class="btn btn-primary btn-lg" ng-click="getInfo()"/>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -62,12 +62,17 @@
                     <div id="map" class="col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"></div>
                 </div>
             </div>
-
+            <div id="no-estimate" class="row text-center">
+                <div class="col-sm-12 col-md-12 col-lg-12 lrg">
+                    No estimate found
+                </div>
+            </div>
         </div>
-        <div id="load" class="center"></div>
-        </div>
+        <div id="load" class="spinner"></div>
         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>          
         <script>
+            streetAddress = "";
+            cityState = "";
             function init() {
                 // create the map
                 var myOptions = {
@@ -93,17 +98,17 @@
                         }           
                         streetAddress = streetNumber + " " + streetRoute;
                         cityState = city + "," + state;
-
+            
                 });
              }
         </script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script> 
-        <script src="js/spin.js"></script>         
-        <script src="js/main.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaOzU7c_8RDreOb24Cugn1D9_gaWt0_To&callback=init&libraries=places" ></script>
-                <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        
 
+        <script src="js/spin.js"></script>    
+        <script src="js/angular-loading-bar.min.js"></script>     
+        <script src="controllers/main.js"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaOzU7c_8RDreOb24Cugn1D9_gaWt0_To&callback=init&libraries=places" ></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     </body>
 </html>
