@@ -26,8 +26,7 @@ module.exports.getEstimate = function(add, cityState, callback){
 	        	"mid": resultsZestimate['amount'][0]['_'],
 	       		"high": resultsZestimate['valuationRange'][0]['high'][0]['_']
 	      	};
-            console.log("from estimator: " + estimate.lat);
-	      	callback(null, estimate);
+            callback(null, estimate);
 	    	}
 	    	else{
                 if(err) callback(err);

@@ -14,6 +14,15 @@ html, body {
 	padding-left: 25px;
 	padding-right: 25px;
 }
+#realtor{
+	margin: 0 auto;
+	padding: 20px;
+	display:none;
+	background-color: white;
+	border-radius: 25px;
+    border: 2px solid #73AD21;
+}
+
 #header {
 	height: 200px;
 	font-size: 4em;
@@ -29,7 +38,7 @@ label {
 .lrg {
 	font-size: 3em;
 	font-weight: light; 
-	color: white;
+	color: black;
 }
 
 #map{
@@ -37,7 +46,30 @@ label {
 	height: 400px;
 	max-width: 400px;
 }
-#map-estimator{
-	height: 400px;
+#mapView{
+	margin: 0 auto;
+	padding: 20px;
+	display:none;
+	background-color: white;
+	border-radius: 25px;
+    border: 2px solid #73AD21;
+}
+#no-estimate{
 	display: none;
+}
+
+.glyphicon-triangle-top{
+	color:green;
+
+}
+.glyphicon-triangle-bottom{
+	color:red;
+}
+.glyphicon-triangle-right{
+	color:black;
+}
+
+input, textarea{
+    background-color:#666;
+    color: #FFF;
 }

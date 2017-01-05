@@ -10,29 +10,47 @@ app.controller("estimateCtlr", ['$scope', '$http', function($scope, $http){
 					  "email": $scope.email
 				    };
         $http.get('/house_estimate/' + streetAddress + '&' + cityState).then(function(response) {
-            if(response.statuscode != 200){
-                console.log(response);
+             if(response.status != 200){
+                 console.log(response);
+             }
+            $scope.house_estimate = response.data;        
+            loadSpinner();
+         setTimeout(function(){   
+            if($scope.house_estimate.low){
+                $('#load').hide();
+                $("#map").show();
+                $("#mapView").show();
+                loadMap();
+                $("#userinfo").hide();
             }
-            $scope.house_estimate = response.data;
-            console.log($scope.house_estimate);
+            else{
+                $('#load').hide();
+                $("#no-estimate").show();
+                $("#userinfo").hide();        
+            }
+        }, 2000);
+            console.log($scope.house_estimate.low);
         }); 
-
 
         $http.post('/info', profile).then(function(response) {
             console.log(response);
         });
-
-
+    };
+    $scope.getEstimate = function(){
         loadSpinner();
         setTimeout(function(){
-            $('#load').hide();
-            $("#map").show();
-            $("#map-estimator").show();
-            loadMap();
-            $("#userinfo").hide();
+            if($scope.house_estimate.low){
+                $('#load').hide();
+                $("#realtor").show();
+                $("#mapView").hide();
+            }
+            else{
+                $('#load').hide();
+                $("#no-estimate").show();
+                $("#mapView").hide();        
+            }
         }, 2000);
     };
-
     loadMap = function () {
         marker = new google.maps.Marker({
             position: address,
@@ -68,7 +86,6 @@ app.controller("estimateCtlr", ['$scope', '$http', function($scope, $http){
         }
         var target = document.getElementById('load');
         var spinner = new Spinner(opts).spin(target);
-        console.log("spinner loaded");
     };
 
 }]);
