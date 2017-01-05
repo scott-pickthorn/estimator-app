@@ -1,4 +1,4 @@
-var app = angular.module("estimate", ["angular-loading-bar"]);
+var app = angular.module("estimate", []);
 
 app.controller("estimateCtlr", ['$scope', '$http', function($scope, $http){
 	$scope.house_estimate = {};
@@ -16,18 +16,17 @@ app.controller("estimateCtlr", ['$scope', '$http', function($scope, $http){
             $scope.house_estimate = response.data;        
             loadSpinner();
          setTimeout(function(){   
-            $('#realtor').show();
             if($scope.house_estimate.low){
-                    $('#load').hide();
-                    $("#map").show();
-                    $("#map-estimator").show();
-                    loadMap();
-                    $("#userinfo").hide();
+                $('#load').hide();
+                $("#map").show();
+                $("#mapView").show();
+                loadMap();
+                $("#userinfo").hide();
             }
             else{
-                    $('#load').hide();
-                    $("#no-estimate").show();
-                    $("#userinfo").hide();        
+                $('#load').hide();
+                $("#no-estimate").show();
+                $("#userinfo").hide();        
             }
         }, 2000);
             console.log($scope.house_estimate.low);
@@ -37,7 +36,21 @@ app.controller("estimateCtlr", ['$scope', '$http', function($scope, $http){
             console.log(response);
         });
     };
-    
+    $scope.getEstimate = function(){
+        loadSpinner();
+        setTimeout(function(){
+            if($scope.house_estimate.low){
+                $('#load').hide();
+                $("#realtor").show();
+                $("#mapView").hide();
+            }
+            else{
+                $('#load').hide();
+                $("#no-estimate").show();
+                $("#mapView").hide();        
+            }
+        }, 2000);
+    };
     loadMap = function () {
         marker = new google.maps.Marker({
             position: address,

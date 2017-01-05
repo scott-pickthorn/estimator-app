@@ -1,8 +1,8 @@
 <div id="realtor" class="row">
     <div id="realtor_info">
         <div id="realtor-pics"class="col-sm-4 col-md-4 col-lg-4">
-            <img src="../img/Michael-Elton.jpg" class="img-responsive"/>
-            <img src="../img/melton.jpg" class="img-responsive"/>
+            <a href="http://eltonproperties.com/"><img src="../img/Michael-Elton.jpg" class="img-responsive"/></a>
+            <a href="http://eltonproperties.com/"><img src="../img/melton.jpg" class="img-responsive"/></a>
         </div>
         <div class="med-text col-sm-8 col-md-8 col-lg-8">
             <h3>visit my website by clicking <a href="http://eltonproperties.com/">here</a></h3>
@@ -12,9 +12,9 @@
         </div>
             <div class="col-sm-12 col-md-12 col-lg-12 lrg text-center">
             House Estimates
-            <div><span class="background glyphicon glyphicon-triangle-bottom"></span>{{house_estimate.low | currency:"$":0}}</div> 
-            <div><span class="background glyphicon glyphicon-triangle-right"></span>{{house_estimate.mid | currency:"$":0}}</div>
             <div><span class="background glyphicon glyphicon-triangle-top"></span>{{house_estimate.high | currency:"$":0}}</div>
+            <div><span class="background glyphicon glyphicon-triangle-right"></span>{{house_estimate.mid | currency:"$":0}}</div>
+            <div><span class="background glyphicon glyphicon-triangle-bottom"></span>{{house_estimate.low | currency:"$":0}}</div> 
         </div>
     </div>
 </div>
