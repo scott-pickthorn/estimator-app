@@ -8,4 +8,5 @@ module.exports.printUsers = function(){
 }
 module.exports.saveUser = function(profile){
     db.users.save(profile);
+    console.log("profile saved");
 }
