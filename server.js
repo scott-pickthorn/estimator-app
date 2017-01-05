@@ -25,8 +25,8 @@ app.get('/house_estimate/:address&:cityState', function (req, res) {
   estimator.getEstimate(req.params.address, req.params.cityState, function(err, estimate){
     this.estimate = estimate;
     res.send(estimate);
+    console.log(estimate);
   });
-  console.log(estimate);
 });
 
 

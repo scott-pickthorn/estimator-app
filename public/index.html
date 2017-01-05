@@ -22,10 +22,14 @@
     </head>
     <body ng-app="estimate">
         <div class="container" ng-controller="estimateCtlr">
-
-            
+            <div ng-include="'views/headerView.html'"></div>
+            <div ng-include="'views/realtorView.html'"></div>
+            <div ng-include="'views/addressView.html'"></div>
+            <div ng-include="'views/mapView.html'"></div>
+            <div ng-include="'views/noEstimateView.html'"></div>
             <div id="load" class="spinner"></div>
         </div>
+
         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>          
         <script>
             streetAddress = "";
@@ -63,8 +67,7 @@
 
         <script src="js/spin.js"></script>    
         <script src="js/angular-loading-bar.min.js"></script>     
-        <script src="controllers/main.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaOzU7c_8RDreOb24Cugn1D9_gaWt0_To&callback=init&libraries=places" ></script>
+        <script src="controllers/estimateController.js"></script>
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     </body>
