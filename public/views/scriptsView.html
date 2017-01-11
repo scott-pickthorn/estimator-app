@@ -11,7 +11,7 @@
           }
         map = new google.maps.Map(document.getElementById("map"),myOptions);
             $("#map").hide();
-        autocomplete = new google.maps.places.SearchBox(document.getElementById("address"));
+        autocomplete = new google.maps.places.SearchBox(document.getElementById("address"), {types: ['geocode']});
         google.maps.event.addListener(autocomplete, 'places_changed', function(){
                 var place = autocomplete.getPlaces();
                 address = place[0].geometry.location;

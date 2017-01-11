@@ -9,11 +9,10 @@ module.exports.getEstimate = function(add, cityState, callback){
    var cityStateZip = urlencode(cityState); 
    request('http://www.zillow.com/webservice/GetSearchResults.htm?zws-id=X1-ZWz19g98gn4zrf_3e7gq&address=' + address + '&citystatezip=' + cityStateZip, function (err1, response, body) {
    if(response == undefined){
-        console.log(response);
+        console.log(err1);
         if(err1) callback(err1);
    }
-
-   if (!err1 && response.statusCode == 200) {
+   if (response.statusCode == 200) {
    		xmlParser(body, function(err,result){ 
 	      	statusCode = result['SearchResults:searchresults']['message'][0]['code'][0];
 	   		if(statusCode == 0){
@@ -29,12 +28,12 @@ module.exports.getEstimate = function(add, cityState, callback){
             callback(null, estimate);
 	    	}
 	    	else{
-                if(err) callback(err);
+                callback(statusCode);
 	    	}  
 		});
    }
   else{
-   if(err1) callback(err1);
+   callback(err1);
   }
 }); 
 }
