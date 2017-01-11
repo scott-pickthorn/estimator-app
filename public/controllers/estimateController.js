@@ -3,12 +3,7 @@ var app = angular.module("estimate", []);
 app.controller("estimateCtlr", ['$scope', '$http', function($scope, $http){
 	$scope.house_estimate = {};
     $scope.mapscript = '';
-	profile = {};
-
     $scope.getInfo = function(){
-        profile = {"name": $scope.name,
-					  "email": $scope.email
-				    };
         $http.get('/house_estimate/' + streetAddress + '&' + cityState).then(function(response) {
              if(response.status != 200){
                  console.log(response);
@@ -31,13 +26,16 @@ app.controller("estimateCtlr", ['$scope', '$http', function($scope, $http){
         }, 2000);
             console.log($scope.house_estimate.low);
         }); 
-
+    };
+    $scope.getEstimate = function(){
+            profile = {"name": $scope.name,
+                "email": $scope.email
+        };
+        console.log(profile);
         $http.post('/info', profile).then(function(response) {
             console.log(response);
         });
-    };
-    $scope.getEstimate = function(){
-        loadSpinner();
+        $('#load').show();
         setTimeout(function(){
             if($scope.house_estimate.low){
                 $('#load').hide();
