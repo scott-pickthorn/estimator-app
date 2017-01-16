@@ -10,7 +10,7 @@ module.exports.getEstimate = function(add, cityState, callback){
    request('http://www.zillow.com/webservice/GetSearchResults.htm?zws-id=X1-ZWz19g98gn4zrf_3e7gq&address=' + address + '&citystatezip=' + cityStateZip, function (err1, response, body) {
    if(response == undefined){
         console.log(err1);
-        if(err1) callback(err1);
+        if(err1) return callback(err1);
    }
    if (response.statusCode == 200) {
    		xmlParser(body, function(err,result){ 
@@ -25,10 +25,10 @@ module.exports.getEstimate = function(add, cityState, callback){
 	        	"mid": resultsZestimate['amount'][0]['_'],
 	       		"high": resultsZestimate['valuationRange'][0]['high'][0]['_']
 	      	};
-            callback(null, estimate);
+            return callback(null, estimate);
 	    	}
 	    	else{
-                callback(statusCode);
+                return callback(statusCode);
 	    	}  
 		});
    }

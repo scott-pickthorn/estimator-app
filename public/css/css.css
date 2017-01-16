@@ -15,6 +15,7 @@ html, body {
 #map-container{
 	height: 400px;
     width: 100%;	
+    text-align: center;
 }
 #userinfo{
 	margin: 0 auto;
@@ -95,4 +96,12 @@ input, textarea{
 }
 .transparent{
 	opacity:.5;
+}
+#info, {
+    width:80%;
+    min-width: 500px;
+}
+#estimateBtn{
+    width: 100%;
+    margin: 0 auto;
 }
