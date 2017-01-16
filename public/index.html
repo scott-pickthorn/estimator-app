@@ -14,44 +14,12 @@
         </div>
 
         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>          
-<script>
-    streetAddress = "";
-    cityState = "";
-    function init() {
-        // create the map
-        var myOptions = {
-            zoom: 19,
-            center: new google.maps.LatLng(45.6, -122.76),
-            mapTypeId: google.maps.MapTypeId.SATELLITE
-          }
-        map = new google.maps.Map(document.getElementById("map"),myOptions);
-            $("#map").hide();
-        autocomplete = new google.maps.places.SearchBox(document.getElementById("address"), {type:'geocode'});
-        google.maps.event.addListener(autocomplete, 'places_changed', function(){
-                var place = autocomplete.getPlaces();
-                address = place[0].geometry.location;
-                for (i = 0; i < place[0].address_components.length; i++){
-                    if(place[0].address_components[i].types[0] == 'street_number')
-                        var streetNumber = place[0].address_components[i].long_name;
-                    if(place[0].address_components[i].types[0] == 'route')
-                        var streetRoute = place[0].address_components[i].long_name;
-                    if(place[0].address_components[i].types[0] == 'locality')
-                        var city = place[0].address_components[i].long_name;
-                    if(place[0].address_components[i].types[0] == 'administrative_area_level_1')
-                        var state = place[0].address_components[i].long_name;
-                }           
-                streetAddress = streetNumber + " " + streetRoute;
-                cityState = city + "," + state;
-                
-        });
-     }
-</script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script> 
-
-<script src="js/spin.js"></script>    
-<script src="js/angular-loading-bar.min.js"></script>     
-<script src="controllers/estimateController.js"></script>
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="js/main.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script> 
+        <script src="js/spin.js"></script>    
+        <script src="js/angular-loading-bar.min.js"></script>
+        <script src="controllers/estimateController.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     </body>
 </html>
