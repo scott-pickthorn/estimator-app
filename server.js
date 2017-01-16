@@ -35,8 +35,17 @@ app.get('/house_estimate/:address&:cityState', function (req, res) {
 });
 
 
-app.get('/email_estimate/:profile&:estimate', function(){
-  mailer.sendMail(profile.email, estimate);
+app.post('/email_estimate', function(req, res){
+  console.log("i recieved an email request");
+  mailer.sendMail(req.body.email, req.body.estimate, function(err, data){
+     
+    if(err){
+      console.log(err);
+      res.send(err);
+    }
+    console.log(data);
+    res.send(data);
+  });
 });
 
 
@@ -47,18 +56,17 @@ app.get('/api_key', function (req, res) {
 
 
 app.post('/info', function (req, res) {
- 
- // if(!req.body.profile.name){
- //    return res.status(412).send('No name field');
- //  }
- //  if(!req.body.profile.email){  
- //    return res.status(412).send('No email field');
- //  }
- //  profile = {"name": req.body.profile.name,
- //             "email": req.body.profile.email
- //  };
-  //db.saveUser(profile);
-  console.log(req.body);
+ console.log(req.body);
+ if(!req.body.name){
+    return res.status(412).send('No name field');
+  }
+  if(!req.body.email){
+    return res.status(412).send('No email field');
+  }
+  profile = {"name": req.body.name,
+             "email": req.body.email
+  };
+ // db.saveUser(profile);
   res.send('success');
 });
   
