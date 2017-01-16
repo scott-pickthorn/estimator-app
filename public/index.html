@@ -3,23 +3,36 @@
     <div ng-include="'views/headView.html'"></div>
     
     <body ng-app="estimate">
-        <div class="container" ng-controller="estimateCtlr">
+
+        <div class="container">
             <div ng-include="'views/headerView.html'"></div>
-            <div ng-include="'views/realtorView.html'"></div>
             <div ng-include="'views/addressView.html'"></div>
             <div ng-include="'views/mapView.html'"></div>
+            <div ng-include="'views/realtorView.html'"></div>
             <div ng-include="'views/noEstimateView.html'"></div>
             <div id="load" class="spinner"></div>
             <div ng-include="'views/footerView.html'"></div>
         </div>
+        <div ng-controller="addressController">
+            <h1 class="jumbotron">estimate is{{profile}}</h1>
+        </div>
 
+        <!-- vendor -->
         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>          
-        <script src="js/main.js"></script>
+        
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script> 
         <script src="js/spin.js"></script>    
         <script src="js/angular-loading-bar.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>  
+          
+        <script src="js/main.js"></script>
+        <!--contollers-->
+        <script src="controllers/addressController.js"></script>
         <script src="controllers/estimateController.js"></script>
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="controllers/realtorController.js"></script>
+        <!-- services -->
+        <script src="services/profileService.js"></script>
+
+
     </body>
 </html>
