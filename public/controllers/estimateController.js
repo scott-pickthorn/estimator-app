@@ -4,12 +4,13 @@ app.controller("estimateCtlr", ['$scope', '$http', function($scope, $http){
 	$scope.house_estimate = {};
     $scope.mapscript = '';
     $scope.getInfo = function(){
+        loadSpinner();
         $http.get('/house_estimate/' + streetAddress + '&' + cityState).then(function(response) {
              if(response.status != 200){
                  console.log(response);
              }
             $scope.house_estimate = response.data;        
-            loadSpinner();
+            
          setTimeout(function(){   
             if($scope.house_estimate.low){
                 $('#load').hide();
@@ -27,9 +28,11 @@ app.controller("estimateCtlr", ['$scope', '$http', function($scope, $http){
             console.log($scope.house_estimate.low);
         }); 
     };
-    $scope.getEstimate = function(){
-            profile = {"name": $scope.name,
-                "email": $scope.email
+    $scope.getEstimate = function(user){
+            console.log(user);
+            profile = {"name": user.name,
+                "email": user.email,
+                "estimate": $scope.house_estimate
         };
         console.log(profile);
         $http.post('/info', profile).then(function(response) {
@@ -38,6 +41,14 @@ app.controller("estimateCtlr", ['$scope', '$http', function($scope, $http){
         $('#load').show();
         setTimeout(function(){
             if($scope.house_estimate.low){
+                $http.post('/email_estimate', profile).then(function(response){
+                    if(response.status != 200){
+                        console.log(response);
+                    }
+                    else{
+                        console.log(response.data);
+                    }
+                });
                 $('#load').hide();
                 $("#realtor").show();
                 $("#mapView").hide();
