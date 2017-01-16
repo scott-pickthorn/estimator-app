@@ -95,9 +95,8 @@ input, textarea{
 .transparent{
 	opacity:.5;
 }
-#info, {
+#info {
     width:80%;
-    min-width: 500px;
 }
 #estimateBtn{
     width: 100%;
